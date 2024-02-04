@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 
 const authRoute = require('./routes/authRoutes')
+const messageRoute = require('./routes/messageRoutes')
 
 const app = express()
 
@@ -12,6 +13,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use("/api/auth", authRoute);
+app.use("/api/message", messageRoute);
 
 mongoose.set('strictQuery', true).connect(process.env.MONGO_URI)
     .then(() => {
