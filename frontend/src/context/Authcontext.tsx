@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, type ReactNode, useState, FC } fr
 export type User = {
     _id: string;
     username: string;
+    token: string;
 }
 
 type userContext = {

@@ -16,7 +16,6 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { getuser } from "@/functions/functions"
 
 const signup = z.object({
     username: z.string().min(2, 'Username must be at least 2 characters'),
@@ -39,10 +38,11 @@ const Login = () => {
         try {
             const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}api/auth/login`, {
                 method: 'POST',
-                body: JSON.stringify(data),
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify(data),
             })
             const json = await response.json()
             if (!response.ok) {
@@ -90,7 +90,6 @@ const Login = () => {
                             )}
                         />
                         <Button className="w-full" type="submit">Login</Button>
-                        <Button className="w-full" onClick={getuser}>get</Button>
                         <p className="text-[13px] mt-[4px]">Don't have an accout? <a href="/signup" className="underline cursor-pointer text-[#00ADB5]">Signup</a></p>
                     </form>
                 </Form>

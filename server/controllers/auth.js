@@ -4,23 +4,16 @@ const generateTokenAndSetCookie = require("../utils/generateToken")
 
 const getUsers = async (req, res) => {
 	try {
-		const loggedInUserId = req.body;
-
-		const filteredUsers = await User.find({ _id: { $ne: loggedInUserId } }).select("-password");
+		const { id } = req.params;
+		const user = await User.findOne({ _id: id })
+		const userobj = {
+			_id: user._id,
+			username: user.username,
+		}
+		console.log(id)
+		const filteredUsers = await User.find({ _id: { $ne: userobj } }).select("-password");
 
 		res.status(200).json(filteredUsers);
-	} catch (error) {
-		console.error("Error in getUsersForSidebar: ", error.message);
-		res.status(500).json({ error: "Internal server error" });
-	}
-};
-
-const getallusers = async (req, res) => {
-	try {
-
-		const users = await User.find().select("-password")
-
-		res.status(200).json(users);
 	} catch (error) {
 		console.error("Error in getUsersForSidebar: ", error.message);
 		res.status(500).json({ error: "Internal server error" });
@@ -58,7 +51,6 @@ const signup = async (req, res) => {
 
 			res.status(201).json({
 				_id: newUser._id,
-				fullName: newUser.fullName,
 				username: newUser.username,
 			});
 		} else {
@@ -80,12 +72,12 @@ const login = async (req, res) => {
 			return res.status(400).json({ error: "Invalid username or password" });
 		}
 
-		generateTokenAndSetCookie(user._id, res);
+		const token = generateTokenAndSetCookie(user._id, res);
 
 		res.status(200).json({
 			_id: user._id,
-			fullName: user.fullName,
 			username: user.username,
+			token: token
 		});
 	} catch (error) {
 		console.log("Error in login controller", error.message);
@@ -103,4 +95,4 @@ const logout = (req, res) => {
 	}
 };
 
-module.exports = { signup, logout, login, getUsers, getallusers }
+module.exports = { signup, logout, login, getUsers }

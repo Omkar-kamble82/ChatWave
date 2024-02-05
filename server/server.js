@@ -25,7 +25,8 @@ var corsOptions = {
             callback(new Error('Not allowed by CORS'));
         }
     },
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 200,
+    credentials: true
 }    
 
 app.use(cors(corsOptions));
