@@ -2,13 +2,25 @@ const bcrypt = require("bcryptjs")
 const User = require("../models/user")
 const generateTokenAndSetCookie = require("../utils/generateToken")
 
-const getUsersForSidebar = async (req, res) => {
+const getUsers = async (req, res) => {
 	try {
-		const loggedInUserId = req.user._id;
+		const loggedInUserId = req.body;
 
 		const filteredUsers = await User.find({ _id: { $ne: loggedInUserId } }).select("-password");
 
 		res.status(200).json(filteredUsers);
+	} catch (error) {
+		console.error("Error in getUsersForSidebar: ", error.message);
+		res.status(500).json({ error: "Internal server error" });
+	}
+};
+
+const getallusers = async (req, res) => {
+	try {
+
+		const users = await User.find().select("-password")
+
+		res.status(200).json(users);
 	} catch (error) {
 		console.error("Error in getUsersForSidebar: ", error.message);
 		res.status(500).json({ error: "Internal server error" });
@@ -91,4 +103,4 @@ const logout = (req, res) => {
 	}
 };
 
-module.exports = { signup, logout, login, getUsersForSidebar }
+module.exports = { signup, logout, login, getUsers, getallusers }
