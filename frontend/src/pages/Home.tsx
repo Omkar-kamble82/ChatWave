@@ -7,7 +7,7 @@ const Home = () => {
   const { setValue } = useUserContext();
   const logout = async () => {
     try {
-        const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}/logout`, {
+        const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}/api/auth/logout`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -16,6 +16,7 @@ const Home = () => {
         if (response.ok) {
             toast.success("Logged out successfully")
             setValue(null)
+            localStorage.removeItem("user");
         }
     } catch(err) {
         console.log(err)
