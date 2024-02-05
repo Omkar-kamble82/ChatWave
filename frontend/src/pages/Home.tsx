@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { useUserContext } from "@/context/Authcontext"
 import toast from "react-hot-toast"
+import Navbar from "@/components/shared/Navbar"
 const Home = () => {
 
   const { setValue, value } = useUserContext();
@@ -42,8 +43,7 @@ const Home = () => {
 
   return (
     <div>
-      <Button onClick={logout}>Logout</Button>
-      <Button onClick={getuser}>get</Button>
+      <Navbar />
 
     </div>
   )
