@@ -2,9 +2,7 @@ import { Button } from "@/components/ui/button"
 import { useUserContext } from "@/context/Authcontext"
 import toast from "react-hot-toast"
 
-type Props = {}
-
-const Home = (props: Props) => {
+const Home = () => {
 
   const { setValue } = useUserContext();
   const logout = async () => {
