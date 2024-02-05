@@ -37,7 +37,7 @@ const Login = () => {
       async function onSubmit(values: z.infer<typeof signup>) {
         const data = {username: values.username, password: values.password }
         try {
-            const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}/api/auth/login`, {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}api/auth/login`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {

@@ -41,7 +41,7 @@ const Signup = () => {
         }
         const data = {username: values.username, password: values.password, confirmPassword: values.confirmpassword}
         try {
-            const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}/api/auth/signup`, {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}api/auth/signup`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
