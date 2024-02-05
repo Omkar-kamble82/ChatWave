@@ -3,9 +3,8 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import signupimg from "../assets/signup.jpg"
 import logo from "../assets/logo.png"
-import { User } from "@/context/Authcontext"
-import { useUserContext } from "@/context/Authcontext"
 import { Button } from "@/components/ui/button"
+import { useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
 import {
   Form,
@@ -25,7 +24,7 @@ const signup = z.object({
   
 
 const Signup = () => {
-    const { setValue } = useUserContext();
+    const navigate = useNavigate()
 
     const form = useForm<z.infer<typeof signup>>({
         resolver: zodResolver(signup),
@@ -43,6 +42,7 @@ const Signup = () => {
         try {
             const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}api/auth/signup`, {
                 method: 'POST',
+                credentials: 'include',
                 body: JSON.stringify(data),
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,8 +51,10 @@ const Signup = () => {
             const json = await response.json()
             if (!response.ok) {
                 toast.error(json.error)
+                return
             }
-            setValue(json as User)
+            toast.success("User successfully created!!")
+            navigate('/home')
         } catch (err: any) {
             toast.error(err.message)
         }
@@ -109,10 +111,10 @@ const Signup = () => {
                                 </FormItem>
                             )}
                         />
-                        <Button className="w-full" type="submit">Submit</Button>
+                        <Button className="w-full" type="submit">Signup</Button>
+                        <p className="text-[13px] mt-[4px]">Already have an account? <a href="/" className="underline cursor-pointer text-[#00ADB5]">Login</a></p>
                     </form>
                 </Form>
-                <p className="text-[13px] mt-[4px]">Already have an account? <a href="/" className="underline cursor-pointer text-[#00ADB5]">Login</a></p>
             </div>
         </div>
     </div>

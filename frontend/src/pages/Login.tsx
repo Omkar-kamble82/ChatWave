@@ -49,6 +49,7 @@ const Login = () => {
                 toast.error(json.error)
                 return
             }
+            toast.success("Logged in successfully!!")
             setValue(json as User)
         } catch (err: any) {
             toast.error(err.message)
