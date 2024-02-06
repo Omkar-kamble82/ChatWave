@@ -1,9 +1,10 @@
 import { useUserContext } from "@/context/Authcontext";
 import { User } from "@/context/Authcontext";
 import toast from "react-hot-toast";
+
 export const getuser = async () => {
     try {
-        const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI_LOCAL}api/auth`, {
+        const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}api/auth`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -13,7 +14,7 @@ export const getuser = async () => {
         if (!response.ok) {
             return
         }
-        console.log(json)
+        return json
     } catch(err) {
         console.log(err)
     }

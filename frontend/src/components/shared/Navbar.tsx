@@ -25,7 +25,7 @@ const Navbar = () => {
       }
   return (
     <nav className='w-full shadow-2xl flex justify-between items-center p-3'>
-        <img className="w-[200px] sm:w-[250px] cursor-pointer" src={logo} alt="logo"/>
+        <a href="/home"><img className="w-[200px] sm:w-[250px] cursor-pointer" src={logo} alt="logo"/></a>
         <Button onClick={logout}>Logout</Button>
     </nav>
   )
