@@ -3,9 +3,8 @@ const Message = require("../models/message")
 
 const sendMessage = async (req, res) => {
 	try {
-		const { message, type } = req.body;
+		const { message, type, senderId } = req.body;
 		const { id: receiverId } = req.params;
-		const senderId = req.user._id;
 
 		let conversation = await Conversation.findOne({
 			participants: { $all: [senderId, receiverId] },
@@ -40,7 +39,7 @@ const sendMessage = async (req, res) => {
 const getMessages = async (req, res) => {
 	try {
 		const { id: userToChatId } = req.params;
-		const senderId = req.user._id;
+		const { senderId } = req.body;
 
 		const conversation = await Conversation.findOne({
 			participants: { $all: [senderId, userToChatId] },
