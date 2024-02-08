@@ -17,7 +17,7 @@ export const SocketContextProvider = ({ children }) => {
     // @ts-ignore
 	useEffect(() => {
 		if (value) {
-			const socket = io(import.meta.env.VITE_SERVER_AUTH_URI, {
+			const socket = io(import.meta.env.VITE_SERVER_AUTH_URI_LOCAL, {
 				query: {
 					userId: value._id,
 				},
