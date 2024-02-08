@@ -1,3 +1,3 @@
-import { app } from "../socket/socket.js"
+import { app } from "../server.js";
 
 export default app
