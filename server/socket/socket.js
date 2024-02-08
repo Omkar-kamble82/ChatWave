@@ -3,13 +3,13 @@ import http from "http";
 import dotenv from "dotenv";
 import express from "express";
 
-const app = express();
 dotenv.config();
+const app = express();
 const server = http.createServer(app);
 
 const io = new Server(server, {
 	cors: {
-		origin: ["https://chatwave-c458d.web.app"],
+		origin: '*',
 		methods: ["GET", "POST", "PATCH"],
 	},
 });
