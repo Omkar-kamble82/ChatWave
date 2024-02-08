@@ -1,14 +1,14 @@
-require('dotenv').config()
+import dotenv from "dotenv";
+import express from 'express'
+import mongoose from 'mongoose'
+import cookieParser from 'cookie-parser'
+import cors from 'cors'
 
-const express = require('express')
-const mongoose = require('mongoose')
-const cookieParser = require('cookie-parser')
-const cors = require('cors')
+import authRoute from './routes/authRoutes.js'
+import messageRoute from './routes/messageRoutes.js'
+import { app, server } from "./socket/socket.js"
 
-const authRoute = require('./routes/authRoutes')
-const messageRoute = require('./routes/messageRoutes')
-
-const app = express()
+dotenv.config();
 
 app.use(express.json())
 app.use(cookieParser())
@@ -17,7 +17,6 @@ const allowedOrigins = [
     process.env.CLIENT,
     process.env.LOCAL,
 ]
-
 var corsOptions = {
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
@@ -38,7 +37,7 @@ app.use("/api/message", messageRoute);
 mongoose.set('strictQuery', true).connect(process.env.MONGO_URI)
     .then(() => {
         console.log('connected to database')
-        app.listen(process.env.PORT, () => {
+        server.listen(process.env.PORT, () => {
             console.log('listening for requests on port', process.env.PORT)
         })
     })

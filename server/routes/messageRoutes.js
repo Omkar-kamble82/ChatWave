@@ -1,5 +1,5 @@
-const express = require("express")
-const { getMessages, sendMessage, deleteMessage } = require("../controllers/message")
+import express from "express"
+import { getMessages, sendMessage, deleteMessage } from "../controllers/message.js"
 
 const router = express.Router();
 
@@ -7,4 +7,4 @@ router.post("/:id", getMessages);
 router.patch("/delete/:id", deleteMessage);
 router.post("/send/:id", sendMessage);
 
-module.exports = router
+export default router

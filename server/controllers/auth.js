@@ -1,6 +1,6 @@
-const bcrypt = require("bcryptjs")
-const User = require("../models/user")
-const generateTokenAndSetCookie = require("../utils/generateToken")
+import bcrypt from "bcryptjs"
+import User from "../models/user.js"
+import generateTokenAndSetCookie from "../utils/generateToken.js"
 
 const getUsers = async (req, res) => {
 	try {
@@ -95,4 +95,4 @@ const logout = (req, res) => {
 	}
 };
 
-module.exports = { signup, logout, login, getUsers }
+export { signup, logout, login, getUsers }

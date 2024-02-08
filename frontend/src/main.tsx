@@ -6,6 +6,8 @@ import { Toaster } from 'react-hot-toast'
 import { BrowserRouter } from 'react-router-dom'
 import { UserContextProvider } from './context/Authcontext.tsx'
 import { ChatContextProvider } from './context/Chatcontext.tsx'
+import { SocketContextProvider } from './context/Socketcontext.tsx'
+import { ConvoContextProvider } from './context/Convocontext.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -13,7 +15,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Toaster/>
         <UserContextProvider >
           <ChatContextProvider>
-             <App />
+            <SocketContextProvider>
+              <ConvoContextProvider>
+                <App />
+              </ConvoContextProvider>
+            </SocketContextProvider>
           </ChatContextProvider>
         </UserContextProvider>
     </BrowserRouter>

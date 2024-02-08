@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
     "build": "npm install",
-    "vercel-build":"echo hello"
+    "vercel-build": "echo hello"
   },
   "keywords": [],
   "author": "",
