@@ -4,7 +4,6 @@ import { useUserContext } from "@/context/Authcontext"
 import toast from "react-hot-toast"
 import Sidebar from "@/components/shared/Sidebar"
 import Chat from "@/components/shared/Chat"
-import useListenMessages from "@/hooks/Listen";
 
 export type userobject = {
   createdAt: string
