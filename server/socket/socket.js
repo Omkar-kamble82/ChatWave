@@ -10,7 +10,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
 		origin: "https://chatwave-c458d.web.app",
-		methods: ["GET", "POST"],
+		methods: ["GET", "POST", "PATCH"],
 	},
 });
 
