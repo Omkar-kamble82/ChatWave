@@ -43,128 +43,34 @@ type props = {
 const Chat = (props: props) => {
     const { users } = props
     const { setChat, chat } = useChatContext()
-    const [message, setMessage] = useState<message[]>([
-        {
-            "_id": "65c388c3c1f7102d36f30edb",
-            "senderId": "65c10a54e3541caaa3da5b01",
-            "receiverId": "65c10989e3541caaa3da5afc",
-            "message": "hi john!!",
-            "type": "text",
-            "deletestatus": false,
-            "createdAt": "2024-02-07T13:42:27.295Z",
-            "updatedAt": "2024-02-07T13:42:27.295Z",
-            "__v": 0
-        },
-        {
-            "_id": "65c388f3c1f7102d36f30edf",
-            "senderId": "65c10a54e3541caaa3da5b01",
-            "receiverId": "65c10989e3541caaa3da5afc",
-            "message": "How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!!",
-            "type": "text",
-            "deletestatus": false,
-            "createdAt": "2024-02-07T13:43:15.250Z",
-            "updatedAt": "2024-02-07T13:43:15.250Z",
-            "__v": 0
-        },
-        {
-            "_id": "65c38919c1f7102d36f30ee3",
-            "senderId": "65c10989e3541caaa3da5afc",
-            "receiverId": "65c10a54e3541caaa3da5b01",
-            "message": "Hello Alice!!",
-            "type": "text",
-            "deletestatus": false,
-            "createdAt": "2024-02-07T13:43:53.998Z",
-            "updatedAt": "2024-02-07T13:43:53.998Z",
-            "__v": 0
-        },
-        {
-            "_id": "65c3894ac1f7102d36f30ee7",
-            "senderId": "65c10989e3541caaa3da5afc",
-            "receiverId": "65c10a54e3541caaa3da5b01",
-            "message": "I'm fine!! what about you",
-            "type": "text",
-            "deletestatus": false,
-            "createdAt": "2024-02-07T13:44:42.267Z",
-            "updatedAt": "2024-02-07T13:44:42.267Z",
-            "__v": 0
-        },
-        {
-            "_id": "65c388c3c1f7102d36f30edb",
-            "senderId": "65c10a54e3541caaa3da5b01",
-            "receiverId": "65c10989e3541caaa3da5afc",
-            "message": "hi john!!",
-            "type": "text",
-            "deletestatus": false,
-            "createdAt": "2024-02-07T13:42:27.295Z",
-            "updatedAt": "2024-02-07T13:42:27.295Z",
-            "__v": 0
-        },
-        {
-            "_id": "65c388f3c1f7102d36f30edf",
-            "senderId": "65c10a54e3541caaa3da5b01",
-            "receiverId": "65c10989e3541caaa3da5afc",
-            "message": "How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!! How are you!!",
-            "type": "text",
-            "deletestatus": false,
-            "createdAt": "2024-02-07T13:43:15.250Z",
-            "updatedAt": "2024-02-07T13:43:15.250Z",
-            "__v": 0
-        },
-        {
-            "_id": "65c38919c1f7102d36f30ee3",
-            "senderId": "65c10989e3541caaa3da5afc",
-            "receiverId": "65c10a54e3541caaa3da5b01",
-            "message": "Hello Alice!!",
-            "type": "text",
-            "deletestatus": false,
-            "createdAt": "2024-02-07T13:43:53.998Z",
-            "updatedAt": "2024-02-07T13:43:53.998Z",
-            "__v": 0
-        },
-        {
-            "_id": "65c3894ac1f7102d36f30ee7",
-            "senderId": "65c10989e3541caaa3da5afc",
-            "receiverId": "65c10a54e3541caaa3da5b01",
-            "message": "I'm fine!! what about you",
-            "type": "text",
-            "deletestatus": false,
-            "createdAt": "2024-02-07T13:44:42.267Z",
-            "updatedAt": "2024-02-07T13:44:42.267Z",
-            "__v": 0
-        }
-    ])
+    const [message, setMessage] = useState<message[]>([])
     const { value } = useUserContext();
     const convo = chat
 
-    // const getmessages = async () => {
-    //     try {
-    //         const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}api/message/${chat?._id}`, {
-    //             method: 'POST',
-    //             credentials: 'include',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify(value?._id),
-    //         })
-    //         const json = await response.json()
-    //         if (!response.ok) {
-    //             toast.error(json.error)
-    //             return
-    //         }
-    //         setMessage(json as any)
-    //         console.log("Json",message)
-    //     } catch(err: any) {
-    //         toast.error(err)
-    //     }
-    // }
+    const getmessages = async () => {
+        const senderId = {senderId: value?._id}
+        try {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}api/message/${chat?._id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(senderId),
+            })
+            const json = await response.json()
+            if (!response.ok) {
+                toast.error(json.error)
+                return
+            }
+            setMessage(json as any)
+        } catch(err: any) {
+            toast.error(err)
+        }
+    }
     
-    //   useEffect(() => {
-    //     if(chat){
-    //         const user = getmessages()
-    //         console.log(user)
-    //     }
-        
-    //   }, [])
+      useEffect(() => {
+            getmessages()        
+      }, [])
   return (
     <>
     <div className="w-[55px] min-h-[93vh] max-h-[100vh] border-r-[1px] border-gray-600 sm:hidden overflow-y-scroll">
