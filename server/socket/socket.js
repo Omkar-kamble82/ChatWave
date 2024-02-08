@@ -7,10 +7,20 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
+const allowedOrigins = [
+  process.env.CLIENT,
+  process.env.LOCAL,
+]
 const io = new Server(server, {
   cors: {
-    origin: "https://chatwave-c458d.web.app",
-    methods: ["GET", "POST", "PATCH"],
+     origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+           callback(null, true);
+        } else {
+           callback(new Error('Not allowed by CORS'));
+        }
+     },
+     methods: ["GET", "POST", "PATCH"],
   },
 });
 

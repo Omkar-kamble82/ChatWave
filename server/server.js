@@ -13,10 +13,17 @@ dotenv.config();
 app.use(express.json())
 app.use(cookieParser())
 
-if (!process.env.MONGO_URI || !process.env.CLIENT || !process.env.LOCAL) {
-    throw new Error('Missing required environment variables');
+if (!process.env.MONGO_URI) {
+    throw new Error('Missing required environment variable: MONGO_URI');
 }
-  
+
+if (!process.env.CLIENT) {
+    throw new Error('Missing required environment variable: CLIENT');
+}
+
+if (!process.env.LOCAL) {
+    throw new Error('Missing required environment variable: LOCAL');
+}
 
 const allowedOrigins = [
     process.env.CLIENT,
@@ -41,13 +48,13 @@ app.use("/api/message", messageRoute);
 
 mongoose.set('strictQuery', true).connect(process.env.MONGO_URI)
     .then(() => {
-        console.log('connected to database')
+        console.log('Connected to the database');
         server.listen(process.env.PORT, () => {
-            console.log('listening for requests on port', process.env.PORT)
-        })
+            console.log('Server is listening for requests on port', process.env.PORT);
+        });
     })
     .catch((err) => {
-        console.log(err)
-}) 
+        console.error('Error connecting to the database:', err);
+});
 
 export { app }
