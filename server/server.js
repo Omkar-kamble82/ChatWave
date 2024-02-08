@@ -44,3 +44,5 @@ mongoose.set('strictQuery', true).connect(process.env.MONGO_URI)
     .catch((err) => {
         console.log(err)
 }) 
+
+export { app }
