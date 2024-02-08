@@ -30,23 +30,9 @@ var corsOptions = {
 }    
 
 app.use(cors(corsOptions));
-  
 
 app.use("/api/auth", authRoute);
 app.use("/api/message", messageRoute);
-
-app.options("/api/auth", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://chatwave-c458d.web.app");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PATCH");
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    res.status(200).end();
-});
-app.options("/api/message", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://chatwave-c458d.web.app");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PATCH");
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    res.status(200).end();
-});
 
 mongoose.set('strictQuery', true).connect(process.env.MONGO_URI)
     .then(() => {

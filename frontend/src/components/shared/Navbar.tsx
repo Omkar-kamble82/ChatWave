@@ -11,7 +11,7 @@ const Navbar = () => {
 
     const logout = async () => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}api/auth/logout`, {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI_LOCAL}api/auth/logout`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
