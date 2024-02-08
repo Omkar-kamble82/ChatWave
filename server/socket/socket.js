@@ -6,9 +6,10 @@ import express from "express";
 const app = express();
 dotenv.config();
 const server = http.createServer(app);
+
 const io = new Server(server, {
 	cors: {
-		origin: [process.env.LOCAL, process.env.CLIENT],
+		origin: [process.env.CLIENT],
 		methods: ["GET", "POST", "PATCH"],
 	},
 });
