@@ -52,7 +52,7 @@ const Chat = (props: props) => {
         }
         const data = { message: message, type: "text", senderId: value?._id}
         try {
-            const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI_LOCAL}api/message/send/${chat?._id}`, {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}api/message/send/${chat?._id}`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {

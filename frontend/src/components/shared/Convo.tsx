@@ -39,7 +39,7 @@ const Convo = () => {
     const getmessages = async () => {
         const senderId = {senderId: value?._id}
         try {
-            const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI_LOCAL}api/message/${chat?._id}`, {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_AUTH_URI}api/message/${chat?._id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
