@@ -13,21 +13,26 @@ dotenv.config();
 app.use(express.json())
 app.use(cookieParser())
 
+if (!process.env.MONGO_URI || !process.env.CLIENT || !process.env.LOCAL) {
+    throw new Error('Missing required environment variables');
+}
+  
+
 const allowedOrigins = [
     process.env.CLIENT,
     process.env.LOCAL,
 ]
-var corsOptions = {
+const corsOptions = {
     origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
     },
     optionsSuccessStatus: 200,
     credentials: true
-}    
+};   
 
 app.use(cors(corsOptions));
 
