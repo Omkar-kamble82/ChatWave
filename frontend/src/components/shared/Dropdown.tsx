@@ -28,7 +28,6 @@ const Dropdown = () => {
     const [loading, setLoading] = useState(false)
     const [type, setType] = useState("")
     const [url, setUrl] = useState("")
-    const [open, setOpen] = useState(false)
     const { value } = useUserContext()
     const { convo, setConvo } = useConvoContext()
     const { chat } = useChatContext()
@@ -68,7 +67,6 @@ const Dropdown = () => {
                 setConvo([...convo, json])
             }
             setLoading(false)
-            setOpen(false)
             toast.success("uploaded successfully")
             setUrl("")
         } catch (err: any) {
@@ -80,8 +78,8 @@ const Dropdown = () => {
     <DropdownMenu>
         <DropdownMenuTrigger  className="h-[40px] mt-[15px] border-2 px-1 rounded-lg"><Paperclip /></DropdownMenuTrigger>
         <DropdownMenuContent>
-            <Dialog open={open} onOpenChange={setOpen}>
-                <DialogTrigger className="" onClick={() => {setOpen(true); setType("image")}}><div className="flex justify-center items-center gap-2 rounded-lg px-2 py-1"><Image size={18} /><span>Image</span></div></DialogTrigger>
+            <Dialog>
+                <DialogTrigger className="" onClick={() => {setType("image")}}><div className="flex justify-center items-center gap-2 rounded-lg px-2 py-1"><Image size={18} /><span>Image</span></div></DialogTrigger>
                 <DialogContent className="w-[96%] max-h-[400px] overflow-y-scroll">
                 <DialogHeader>
                 <DialogTitle>Upload Image: </DialogTitle>
@@ -98,8 +96,8 @@ const Dropdown = () => {
                 </DialogContent>
             </Dialog>
             <DropdownMenuSeparator/>
-            <Dialog open={open} onOpenChange={setOpen}>
-                <DialogTrigger className="" onClick={() => {setOpen(true); setType("video")}}><div className="flex justify-center items-center gap-2 rounded-lg px-2 py-1"><FileVideo size={18} /><span>Video</span></div></DialogTrigger>
+            <Dialog>
+                <DialogTrigger className="" onClick={() => {setType("video")}}><div className="flex justify-center items-center gap-2 rounded-lg px-2 py-1"><FileVideo size={18} /><span>Video</span></div></DialogTrigger>
                 <DialogContent className="w-[96%] max-h-[400px] overflow-y-scroll">
                 <DialogHeader>
                 <DialogTitle>Upload Video: </DialogTitle>
@@ -116,8 +114,8 @@ const Dropdown = () => {
                 </DialogContent>
             </Dialog>
             <DropdownMenuSeparator/>
-            <Dialog open={open} onOpenChange={setOpen}>
-                <DialogTrigger className="" onClick={() => {setOpen(true); setType("audio")}}><div className="flex justify-center items-center gap-2 rounded-lg px-2 py-1"><FileAudio2 size={18} /><span>Audio</span></div></DialogTrigger>
+            <Dialog>
+                <DialogTrigger className="" onClick={() => {setType("audio")}}><div className="flex justify-center items-center gap-2 rounded-lg px-2 py-1"><FileAudio2 size={18} /><span>Audio</span></div></DialogTrigger>
                 <DialogContent className="w-[96%] max-h-[400px] overflow-y-scroll">
                 <DialogHeader>
                 <DialogTitle>Upload Audio: </DialogTitle>
@@ -134,8 +132,8 @@ const Dropdown = () => {
                 </DialogContent>
             </Dialog>
             <DropdownMenuSeparator/>
-            <Dialog open={open} onOpenChange={setOpen}>
-                <DialogTrigger className="" onClick={() => {setOpen(true); setType("file")}}><div className="flex justify-center items-center gap-2 rounded-lg px-2 py-1"><File size={18} /><span>File</span></div></DialogTrigger>
+            <Dialog>
+                <DialogTrigger className="" onClick={() => {setType("file")}}><div className="flex justify-center items-center gap-2 rounded-lg px-2 py-1"><File size={18} /><span>File</span></div></DialogTrigger>
                 <DialogContent className="w-[96%] max-h-[400px] overflow-y-scroll">
                 <DialogHeader>
                 <DialogTitle>Upload File: </DialogTitle>
