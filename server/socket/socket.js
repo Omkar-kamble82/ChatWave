@@ -11,6 +11,7 @@ const allowedOrigins = [
   process.env.CLIENT,
   process.env.LOCAL,
 ]
+console.log(allowedOrigins)
 const io = new Server(server, {
   cors: {
      origin: allowedOrigins,
