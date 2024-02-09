@@ -14,7 +14,7 @@ export const SocketContextProvider = ({ children }) => {
 	const [socket, setSocket] = useState(null);
 	const [onlineUsers, setOnlineUsers] = useState([]);
 	const { value } = useUserContext();
-	const serverUrl = import.meta.env.VITE_SERVER_AUTH_URI_LOCAL;
+	const serverUrl = import.meta.env.VITE_SERVER_AUTH_URI;
     // @ts-ignore
 	useEffect(() => {
 		if (value) {
