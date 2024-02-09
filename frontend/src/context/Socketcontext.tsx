@@ -21,6 +21,7 @@ export const SocketContextProvider = ({ children }) => {
 				query: {
 					userId: value._id,
 				},
+				transports: ["websocket"],
 			});
             // @ts-ignore
 			setSocket(socket);
