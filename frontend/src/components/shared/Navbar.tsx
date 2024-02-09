@@ -2,12 +2,14 @@ import logo from "../../assets/logo.png"
 import toast from "react-hot-toast"
 import { useUserContext } from "@/context/Authcontext"
 import { useChatContext } from "@/context/Chatcontext"
+import { useConvoContext } from "@/context/Convocontext"
 import { Button } from "../ui/button"
 
 const Navbar = () => {
 
     const { setValue } = useUserContext();
     const { setChat } = useChatContext()
+    const { setConvo } = useConvoContext()
 
     const logout = async () => {
         try {
@@ -23,6 +25,8 @@ const Navbar = () => {
                 localStorage.removeItem("user");
                 setChat(null)
                 localStorage.removeItem("chat");
+                setConvo([])
+                localStorage.removeItem("convo");
             }
         } catch(err) {
             console.log(err)

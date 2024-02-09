@@ -8,6 +8,13 @@ import { useUserContext } from "@/context/Authcontext"
 import { Button } from "@/components/ui/button"
 import toast from "react-hot-toast"
 import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import {
   Form,
   FormControl,
   FormField,
@@ -94,6 +101,22 @@ const Login = () => {
                         <p className="text-[13px] mt-[4px]">Don't have an accout? <a href="/signup" className="underline cursor-pointer text-[#00ADB5]">Signup</a></p>
                     </form>
                 </Form>
+                <Dialog>
+                    <DialogTrigger className="text-[16px] font-bold text-[#00ADB5]">Test accounts</DialogTrigger>
+                    <DialogContent className="">
+                    <DialogHeader>
+                    <DialogTitle className="text-left mb-[10px]">Test accounts </DialogTitle>
+                    <div className="flex gap-2 items-center mt-[10px] text-[14px]">
+                        <span>Username: <span className="font-bold text-[#00ADB5]">john</span></span>
+                        <span>Password: <span className="font-bold text-[#00ADB5]">123456</span></span>
+                    </div>
+                    <div className="flex gap-2 items-center mt-[10px] text-[14px]">
+                        <span>Username: <span className="font-bold text-[#00ADB5]">alice</span></span>
+                        <span>Password: <span className="font-bold text-[#00ADB5]">78923</span></span>
+                    </div>
+                    </DialogHeader>
+                    </DialogContent>
+                </Dialog>
             </div>
         </div>
         <div className="hidden sm:block h-[100vh] w-[46vw] relative">
