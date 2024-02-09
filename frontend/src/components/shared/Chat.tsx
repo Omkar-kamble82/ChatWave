@@ -18,6 +18,7 @@ import Convo, { message } from "./Convo";
 import { useSocketContext } from "@/context/Socketcontext";
 import { useConvoContext } from "@/context/Convocontext";
 import useListenMessages from "@/hooks/Listen";
+import Dropdown from "./Dropdown";
 
 type userobject = {
     createdAt: string
@@ -118,6 +119,7 @@ const Chat = (props: props) => {
             {conversation && <Convo />}
                 <form onSubmit={sendMessage}>
                     <div className="mb-2 border-t-[1px] border-gray-600 px-4 flex items-center gap-2 justify-center">
+                        <Dropdown />
                         <Input value={message} onChange={(e) => {setMessage(e.target.value)}} placeholder="message...." className="w-[80%] mt-4"/>
                         <Button type="submit" className="mt-4">Send</Button>
                     </div>

@@ -1,6 +1,7 @@
 {
     "rewrites": [
-      { "source": "/(.*)", "destination": "/api" }
-    ]
-  }
+      { "source": "/(.*)", "destination": "/api" },
+      { "source": "/socket.io", "destination": "/api/socket.io" }
+  ]
+}
   

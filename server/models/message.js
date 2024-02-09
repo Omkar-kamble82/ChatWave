@@ -19,7 +19,7 @@ const messageSchema = new mongoose.Schema(
         type: {
 			type: String,
 			required: true,
-			enum: ["text", "video", "photo", "file"],
+			enum: ["text", "video", "image", "file", "audio"],
 		},
 		deletestatus: {
 			type: Boolean,

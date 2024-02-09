@@ -16,29 +16,6 @@ export type userobject = {
 
 const Home = () => {
   const { value } = useUserContext();
-  // const [users, setUsers] = useState<userobject[]>([
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  //   {_id: '65c10989e3541caaa3da5afc', username: 'john', profilePic: 'https://avatar.iran.liara.run/public/?username=john', createdAt: '2024-02-05T16:15:05.808Z', updatedAt: '2024-02-05T16:15:05.808Z', _v: 0},
-  // ])
   const [users, setUsers] = useState<userobject[]>([])
 
   const getuser = async () => {
@@ -57,7 +34,7 @@ const Home = () => {
     } catch(err: any) {
         toast.error(err)
     }
-}
+  }
 
   useEffect(() => {
     getuser()
