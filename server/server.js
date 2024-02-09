@@ -57,4 +57,4 @@ mongoose.set('strictQuery', true).connect(process.env.MONGO_URI)
         console.error('Error connecting to the database:', err);
 });
 
-export { app }
+export { app, server }
