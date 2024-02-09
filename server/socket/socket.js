@@ -13,13 +13,7 @@ const allowedOrigins = [
 ]
 const io = new Server(server, {
   cors: {
-     origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-           callback(null, true);
-        } else {
-           callback(new Error('Not allowed by CORS'));
-        }
-     },
+     origin:"https://chatwave-c458d.web.app/",
      methods: ["GET", "POST", "PATCH"],
   },
 });
