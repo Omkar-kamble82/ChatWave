@@ -14,10 +14,11 @@ export const SocketContextProvider = ({ children }) => {
 	const [socket, setSocket] = useState(null);
 	const [onlineUsers, setOnlineUsers] = useState([]);
 	const { value } = useUserContext();
+	const serverUrl = import.meta.env.VITE_SERVER_AUTH_URI;
     // @ts-ignore
 	useEffect(() => {
 		if (value) {
-			const socket = io(import.meta.env.VITE_SERVER_AUTH_URI, {
+			const socket = io(serverUrl, {
 				query: {
 					userId: value._id,
 				},
@@ -25,6 +26,15 @@ export const SocketContextProvider = ({ children }) => {
 			});
             // @ts-ignore
 			setSocket(socket);
+			socket.on("connect", () => {
+				console.log("Socket connected:", socket.id);
+			});
+			socket.on("error", (error) => {
+				console.error("Socket error:", error);
+			});
+			socket.on("disconnect", (reason) => {
+				console.log("Socket disconnected:", reason);
+			});
 			socket.on("getOnlineUsers", (users) => {
 				setOnlineUsers(users);
 			});
