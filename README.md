@@ -1,4 +1,4 @@
-# ChatWave: Real-Time Chat App: React.js, Socket.io, JWT-Auth, Shadcn UI, MongoDB, NOde.js, Express.js, Tailwind
+# ChatWave: Real-Time Chat App: React.js, Socket.io, JWT-Auth, Shadcn UI, MongoDB, Node.js, Express.js, Tailwind
 
 
 <a href="https://chatwave-c458d.web.app/">Chatwave </a> is a Fullstack chat application. built using  React.js, Socket.io, JWT-Auth, Shadcn UI, MongoDB, NOde.js, Express.js, Tailwind. User can communicated with each other in real-time and can share all kind of media ( Including Video, Image, Audio, Files ).
