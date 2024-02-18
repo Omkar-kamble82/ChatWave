@@ -27,15 +27,21 @@ const Convo = () => {
     const { convo, setConvo } = useConvoContext()
     const lastMessageRef = useRef();
 
-    function formatTimeString(input: string): string {
-        const dateObject = new Date(input);
-        let hours = dateObject.getHours();
-        const minutes = dateObject.getMinutes().toString().padStart(2, '0');
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12 || 12;
-        const formattedTime = `${hours}:${minutes} ${ampm}`;
-        return formattedTime;
-    }
+function formatTimeString(input: string): string {
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    const dateObject = new Date(input);
+    const dayOfWeek = daysOfWeek[dateObject.getUTCDay()];
+    const date = dateObject.getUTCDate();
+    
+    let hours = dateObject.getUTCHours();
+    const minutes = dateObject.getUTCMinutes().toString().padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12;
+
+    const formattedTime = `${dayOfWeek}:${date} - ${hours}:${minutes} ${ampm}`;
+    return formattedTime;
+}
 
     const getmessages = async () => {
         const senderId = {senderId: value?._id}
