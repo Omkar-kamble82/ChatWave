@@ -37,7 +37,7 @@ const Dropdown = () => {
         setLoading(true)
         const image = e.target.files?.[0];
         if (image == null) return;
-        const imageRef = ref(storage, `ChatImages/${image.name + v4()}`);
+        const imageRef = ref(storage, `ChatImages/${image.name}`);
         await uploadBytes(imageRef, image).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((url) => {
                 url = String(url)
