@@ -255,13 +255,6 @@ Real-time actions mapped by Socket.io client hooks:
 - [ ] Integrate server's `deleteMessage` soft-delete logic inside frontend UI.
 - [ ] Refactor `getMessages` to use `GET` query parameters instead of a `POST` request body.
 
-## Ambiguities & Anomalies
-
-- ⚠️ **Missing LICENSE File** — The server `package.json` references the `ISC` license, but no license file is included in the project root.
-- ⚠️ **Hardcoded WebSocket Origin** — The server socket file ([socket.js](file:///c:/Users/omkar/OneDrive/Desktop/code/ChatWave/server/socket/socket.js#L12)) has a hardcoded client URL (`https://chatwave-c458d.web.app`) rather than sourcing this mapping dynamically from the environment `CLIENT` configuration.
-- ⚠️ **Dead/Unused Files** — The helper module [functions.tsx](file:///c:/Users/omkar/OneDrive/Desktop/code/ChatWave/frontend/src/functions/functions.tsx) contains redundant `getuser` and `logout` wrappers that are never imported or called; matching functions are defined locally on pages instead.
-- ⚠️ **Inconsistent POST Endpoint** — Message retrieval ([messageRoutes.js](file:///c:/Users/omkar/OneDrive/Desktop/code/ChatWave/server/routes/messageRoutes.js#L6)) uses a `POST` endpoint to supply the `senderId` parameter inside request payload instead of using query parameters or authorization cookie references.
-- ⚠️ **Unused Delete Message Flow** — The backend implements message soft-deleting (`deleteMessage` handler inside [message.js](file:///c:/Users/omkar/OneDrive/Desktop/code/ChatWave/server/controllers/message.js#L65)), but no frontend component triggers or connects to this function.
 
 ## Project Structure
 
